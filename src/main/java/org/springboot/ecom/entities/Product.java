@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.hateoas.Link;
 
 @Entity
 public class Product {
@@ -27,4 +28,7 @@ public Long getId() { return id; }
 
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
+
+    public void add(Link selfLink) {
+    }
 }
