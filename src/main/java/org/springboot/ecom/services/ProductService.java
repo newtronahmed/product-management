@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
-//    private final CategoryService categoryService;
 
     @Autowired
     public ProductService(ProductRepository productRepository) {
