@@ -12,8 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/products")
     public class ProductsController {
@@ -24,14 +22,15 @@ import java.util.List;
             this.productService = productService;
         }
     @GetMapping
-    public ResponseEntity<?> getMenuItems(@RequestParam int page, @RequestParam int size) {
+    public ResponseEntity<?> getAllProducts(@RequestParam int page, @RequestParam int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Product> menuItems = productService.getAllProducts(pageable);
 
-        menuItems.forEach(item -> {
-            Link selfLink = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ProductsController.class).getProductById(item.getId())).withSelfRel();
-            item.add(selfLink);
-        });
+//        menuItems.forEach(item -> {
+//            Link selfLink = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ProductsController.class).getProductById(item.getId())).withSelfRel();
+//            item.add(selfLink);
+//        });
+
 
         return ResponseEntity.ok(menuItems);
     }
