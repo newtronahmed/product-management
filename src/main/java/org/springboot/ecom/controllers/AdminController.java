@@ -31,10 +31,10 @@ public class AdminController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/menu")
-    public ResponseEntity<Product> addMenuItem(@RequestBody Product menuItem) {
-        return ResponseEntity.ok(productService.addProduct(menuItem));
-    }
+//    @PostMapping("/menu")
+//    public ResponseEntity<Product> addMenuItem(@RequestBody Product menuItem) {
+//        return ResponseEntity.ok(productService.addProduct(menuItem));
+//    }
 
     @DeleteMapping("/menu/{id}")
     public ResponseEntity<Void> deleteMenuItem(@PathVariable Long id) {
