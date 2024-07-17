@@ -25,20 +25,8 @@ import org.springframework.web.bind.annotation.*;
     public ResponseEntity<?> getAllProducts(@RequestParam int page, @RequestParam int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Product> menuItems = productService.getAllProducts(pageable);
-
-//        menuItems.forEach(item -> {
-//            Link selfLink = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ProductsController.class).getProductById(item.getId())).withSelfRel();
-//            item.add(selfLink);
-//        });
-
-
         return ResponseEntity.ok(menuItems);
     }
-//        @GetMapping
-//        public ResponseEntity<List<Product>> getAllProducts() {
-//            List<Product> products = productService.getAllProducts();
-//            return ResponseEntity.ok(products);
-//        }
 
         @GetMapping("/{id}")
         public ResponseEntity<Product> getProductById(@PathVariable Long id) {
