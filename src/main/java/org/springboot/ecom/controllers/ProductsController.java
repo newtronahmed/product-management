@@ -1,5 +1,7 @@
 package org.springboot.ecom.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springboot.ecom.DTO.ProductRequestDTO;
 import org.springboot.ecom.entities.Category;
 import org.springboot.ecom.entities.Product;
@@ -15,12 +17,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+//import java.util.logging.Logger;
+
 
 @RestController
 @RequestMapping("/api/products")
     public class ProductsController {
         private final ProductService productService;
         private final CategoryService categoryService;
+
+        Logger logger = LoggerFactory.getLogger(ProductsController.class);
         @Autowired
         public ProductsController(ProductService productService, CategoryService categoryService) {
             this.productService = productService;
@@ -34,7 +40,7 @@ import org.springframework.web.bind.annotation.*;
 
         Pageable pageable = PageRequest.of(page, size);
         Page<Product> products;
-
+        logger.info("Get all products reached");
         if (search == null || search.isEmpty()) {
             products = productService.getAllProducts(pageable);
         } else {
