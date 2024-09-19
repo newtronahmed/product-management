@@ -15,8 +15,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
+                        // Secure only Actuator endpoints
+                        .requestMatchers(EndpointRequest.toAnyEndpoint()).authenticated()
+                        // Permit all other requests
                         .anyRequest().permitAll()
                 )
+                // Use HTTP Basic authentication for Actuator endpoints
                 .httpBasic();
 
         return http.build();

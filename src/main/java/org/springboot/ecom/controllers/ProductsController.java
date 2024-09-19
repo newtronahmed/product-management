@@ -11,8 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -76,11 +75,6 @@ import org.springframework.web.bind.annotation.*;
             productService.deleteProduct(id);
             return ResponseEntity.noContent().build();
         }
-//        @GetMapping("/search")
-//        public ResponseEntity<List<Product>> searchProducts(@RequestParam String keyword) {
-//            List<Product> products = productService.searchProducts(keyword);
-//            return ResponseEntity.ok(products);
-//        }
     }
 
 
